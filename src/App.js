@@ -1,28 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, Grid } from 'semantic-ui-react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import { Status } from './status';
+import { EventsList } from './events';
+import { TransactionsList } from './transactions';
+import { Statistics } from './statistics';
+import { Toolbar } from './toolbar';
+import { Details } from './details';
+
+import 'semantic-ui-css/semantic.min.css';
+
+const App = () => (
+    <Container>
+        <Grid padded>
+            <Grid.Column width={8}>
+                <Grid columns={1}>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Status />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Statistics />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Toolbar />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Details />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Grid.Column>
+            <Grid.Column width={8}>
+                <EventsList />
+                <TransactionsList />
+            </Grid.Column>
+        </Grid>
+    </Container>
+);
 
 export default App;
