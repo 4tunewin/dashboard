@@ -37,10 +37,15 @@ class AsyncValue extends Component {
     };
 
     render() {
-        if (this.state.timeout) {
-            return this.props.fallback;
+        const { timeout, fetchDataResult } = this.state;
+        const { children, fallback, placeholder } = this.props;
+
+        const value = timeout ? fallback : fetchDataResult || placeholder;
+
+        if (children) {
+            return children({ value });
         } else {
-            return this.state.fetchDataResult || this.props.placeholder;
+            return value;
         }
     }
 }

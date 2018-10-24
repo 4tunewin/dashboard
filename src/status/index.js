@@ -1,1 +1,1 @@
-export { default as Status } from './components/Status';
+export { default as Status } from './containers/Status';
