@@ -1,9 +1,17 @@
 import React from 'react';
 import { Statistic } from 'semantic-ui-react';
 
-const Jackpot = () => (
+import { AsyncValue } from '../../common';
+
+const Jackpot = ({ fetchJackpotAsync }) => (
     <Statistic>
-        <Statistic.Value>0.68</Statistic.Value>
+        <Statistic.Value>
+            <AsyncValue
+                fetch={fetchJackpotAsync}
+                placeholder="0.000"
+                interval={100}
+            />
+        </Statistic.Value>
         <Statistic.Label>Jackpot</Statistic.Label>
     </Statistic>
 );

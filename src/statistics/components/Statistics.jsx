@@ -1,10 +1,10 @@
 import React from 'react';
 import { Statistic } from 'semantic-ui-react';
 
-import Balance from './Balance';
+import Balance from '../containers/Balance';
 import Bets from './Bets';
-import Jackpot from './Jackpot';
-import LockedInBets from './LockedInBets';
+import Jackpot from '../containers/Jackpot';
+import LockedInBets from '../containers/LockedInBets';
 
 const Statistics = () => (
     <Statistic.Group size="small" centered>

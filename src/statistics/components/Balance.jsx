@@ -1,9 +1,17 @@
 import React from 'react';
 import { Statistic } from 'semantic-ui-react';
 
-const Balance = () => (
+import { AsyncValue } from '../../common';
+
+const Balance = ({ fetchBalanceAsync }) => (
     <Statistic>
-        <Statistic.Value>1390.80</Statistic.Value>
+        <Statistic.Value>
+            <AsyncValue
+                fetch={fetchBalanceAsync}
+                placeholder="0.000"
+                interval={2000}
+            />
+        </Statistic.Value>
         <Statistic.Label>Balance</Statistic.Label>
     </Statistic>
 );
