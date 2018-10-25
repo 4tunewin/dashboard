@@ -1,10 +1,11 @@
 import React from 'react';
+import { map } from 'lodash';
 import { Table, Segment } from 'semantic-ui-react';
 
-import EventItem from './EventItem';
+import EventItem from '../containers/EventItem';
 
-const EventsList = () => (
-    <Table basic="very">
+const EventsList = ({ events }) => (
+    <Table basic="very" striped>
         <Table.Header>
             <Table.Row>
                 <Table.HeaderCell colSpan={3}>EVENTS</Table.HeaderCell>
@@ -16,9 +17,9 @@ const EventsList = () => (
             </Table.Row>
         </Table.Header>
         <Table.Body>
-            <EventItem />
-            <EventItem />
-            <EventItem />
+            {map(events, event => (
+                <EventItem event={event} key={event.transactionHash} />
+            ))}
         </Table.Body>
     </Table>
 );

@@ -1,1 +1,1 @@
-export { default as EventsList } from './components/EventsList';
+export { default as EventsList } from './containers/EventsList';

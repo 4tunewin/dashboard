@@ -3,7 +3,6 @@ import { Container, Grid } from 'semantic-ui-react';
 
 import { Status } from './status';
 import { EventsList } from './events';
-import { TransactionsList } from './transactions';
 import { Statistics } from './statistics';
 import { Toolbar } from './toolbar';
 import { Details } from './details';
@@ -39,7 +38,6 @@ const App = () => (
             </Grid.Column>
             <Grid.Column width={8}>
                 <EventsList />
-                <TransactionsList />
             </Grid.Column>
         </Grid>
     </Container>

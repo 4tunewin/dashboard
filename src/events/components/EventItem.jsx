@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatDistanceStrict } from 'date-fns';
 import { Table } from 'semantic-ui-react';
+
+import EventArgs from './EventArgs';
+import { AsyncValue } from '../../common';
 
 const TableCell = styled(Table.Cell)`
     max-width: 0;
@@ -9,12 +13,22 @@ const TableCell = styled(Table.Cell)`
     white-space: nowrap;
 `;
 
-const EventItem = () => (
-    <Table.Row>
-        <TableCell>34 mins ago</TableCell>
-        <TableCell>Payment</TableCell>
-        <TableCell>0.1</TableCell>
-    </Table.Row>
-);
+const EventItem = ({ event, fetchTimestampAsync }) => {
+    console.log(event);
+    return (
+        <Table.Row>
+            <TableCell>
+                <AsyncValue
+                    fetch={() => fetchTimestampAsync(event.blockNumber)}
+                    placeholder="now"
+                />
+            </TableCell>
+            <TableCell>{event.event}</TableCell>
+            <TableCell>
+                <EventArgs event={event.event} args={event.args} />
+            </TableCell>
+        </Table.Row>
+    );
+};
 
 export default EventItem;
