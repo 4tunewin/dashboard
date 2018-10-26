@@ -21,7 +21,7 @@ const PaymentArgs = ({ args }) => (
             <ExplorerLink address={args.beneficiary} />
         </ListItem>
         <ListItem>
-            <strong>AMOUNT: </strong>{' '}
+            <strong>AMOUNT: </strong>
             {web3.fromWei(args.amount.toNumber(), 'ether')} ETH
         </ListItem>
     </List>
@@ -34,12 +34,12 @@ const BetPlacedArgs = ({ args }) => (
             <ExplorerLink address={args.gambler} />
         </ListItem>
         <ListItem>
-            <strong>AMOUNT: </strong>{' '}
+            <strong>AMOUNT: </strong>
             {web3.fromWei(args.amount.toNumber(), 'ether')} ETH
         </ListItem>
         <ListItem>
-            <strong>COMMIT: </strong> 0x
-            {args.commit.toString(16)}
+            <strong>COMMIT: </strong>
+            {`0x${args.commit.toString(16)}`}
         </ListItem>
         {/* <ListItem>
             <strong>BET MASK: </strong> {args.betMask.toNumber()}

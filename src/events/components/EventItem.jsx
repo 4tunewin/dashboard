@@ -13,22 +13,19 @@ const TableCell = styled(Table.Cell)`
     white-space: nowrap;
 `;
 
-const EventItem = ({ event, fetchTimestampAsync }) => {
-    console.log(event);
-    return (
-        <Table.Row>
-            <TableCell>
-                <AsyncValue
-                    fetch={() => fetchTimestampAsync(event.blockNumber)}
-                    placeholder="now"
-                />
-            </TableCell>
-            <TableCell>{event.event}</TableCell>
-            <TableCell>
-                <EventArgs event={event.event} args={event.args} />
-            </TableCell>
-        </Table.Row>
-    );
-};
+const EventItem = ({ event, fetchTimestampAsync }) => (
+    <Table.Row>
+        <TableCell>
+            <AsyncValue
+                fetch={() => fetchTimestampAsync(event.blockNumber)}
+                placeholder="now"
+            />
+        </TableCell>
+        <TableCell>{event.event}</TableCell>
+        <TableCell>
+            <EventArgs event={event.event} args={event.args} />
+        </TableCell>
+    </Table.Row>
+);
 
 export default EventItem;
