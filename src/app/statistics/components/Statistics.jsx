@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Statistic } from 'semantic-ui-react';
 
 import Balance from '../containers/Balance';
@@ -8,15 +9,23 @@ import Jackpot from '../containers/Jackpot';
 import LockedInBets from '../containers/LockedInBets';
 import Holders from './Holders';
 
+const Group = styled(Statistic.Group)`
+    justify-content: center;
+
+    & > :first-child {
+        margin-left: 0px !important;
+    }
+`;
+
 const Statistics = () => (
-    <Statistic.Group size="mini">
+    <Group size="mini">
         <Balance />
         <Bets />
         <Wins />
         <Jackpot />
         <LockedInBets />
         <Holders />
-    </Statistic.Group>
+    </Group>
 );
 
 export default Statistics;
