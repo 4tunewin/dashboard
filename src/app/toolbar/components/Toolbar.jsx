@@ -20,6 +20,7 @@ const Toolbar = () => (
                     <Dropdown.Item>Change owner</Dropdown.Item>
                     <Dropdown.Item>Change max profit</Dropdown.Item>
                     <Dropdown.Item>Increase jackpot</Dropdown.Item>
+                    <Dropdown.Divider />
                     <Dropdown.Item>Kill Contract</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
