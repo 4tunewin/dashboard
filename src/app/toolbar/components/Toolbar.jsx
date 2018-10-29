@@ -1,29 +1,20 @@
 import React from 'react';
-import { Button, Dropdown, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
+
+import Withdraw from './Withdraw';
+import Topup from './Topup';
+import Holders from './Holders';
+import ActionsMenu from './ActionsMenu';
 
 const Toolbar = () => (
     <Grid>
-        <Grid.Column width={10}>
-            <Button
-                content="Withdraw"
-                icon="arrow alternate circle up"
-                labelPosition="left"
-                basic
-            />
-            <Button content="Holders" icon="users" labelPosition="left" basic />
+        <Grid.Column width={12}>
+            <Withdraw />
+            <Topup />
         </Grid.Column>
-        <Grid.Column width={6} textAlign="right">
-            <Dropdown trigger={<Button icon="settings" basic />} icon>
-                <Dropdown.Menu>
-                    <Dropdown.Item>Change secret signer</Dropdown.Item>
-                    <Dropdown.Item>Change withdraw address</Dropdown.Item>
-                    <Dropdown.Item>Change owner</Dropdown.Item>
-                    <Dropdown.Item>Change max profit</Dropdown.Item>
-                    <Dropdown.Item>Increase jackpot</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item>Kill Contract</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+        <Grid.Column width={4} textAlign="right">
+            <Holders />
+            <ActionsMenu />
         </Grid.Column>
     </Grid>
 );
