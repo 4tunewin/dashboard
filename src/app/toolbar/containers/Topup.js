@@ -17,10 +17,7 @@ const handleSubmit = async (
     const contract = await DiceContract.deployed();
 
     try {
-        await contract.send(web3.toWei(amount, 'ether'), {
-            to: 0x85c6987acee91dc1084a6d2c1344db9cd88c8a9f,
-            from: 0x3397cdef1501b1da81e00eb9685e75b5e7dce231,
-        });
+        await contract.send(web3.toWei(amount, 'ether'));
         setStatus({ type: 'success', msg: 'Fundigs were successfully sent' });
     } catch (e) {
         setStatus({
