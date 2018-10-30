@@ -1,6 +1,8 @@
+import { compose } from 'recompose';
 import { withFormik } from 'formik';
 import { promisify } from 'bluebird';
 
+import withModal from '../../../lib/withModal';
 import { DiceContract } from '../../../contracts';
 import Topup from '../components/Topup';
 
@@ -12,13 +14,16 @@ const { web3 } = window;
  */
 const handleSubmit = async (
     { amount },
-    { validateForm, setSubmitting, setErrors, setStatus },
+    { validateForm, setSubmitting, setErrors, setStatus, props },
 ) => {
     const contract = await DiceContract.deployed();
 
     try {
-        await contract.send(web3.toWei(amount, 'ether'));
-        setStatus({ type: 'success', msg: 'Fundigs were successfully sent' });
+        await contract.sendTransaction({
+            from: web3.eth.accounts[0],
+            value: web3.toWei(amount, 'ether'),
+        });
+        props.onClose();
     } catch (e) {
         setStatus({
             type: 'error',
@@ -59,7 +64,10 @@ const validate = async values => {
     }
 };
 
-export default withFormik({
-    handleSubmit,
-    validate,
-})(Topup);
+export default compose(
+    withModal,
+    withFormik({
+        handleSubmit,
+        validate,
+    }),
+)(Topup);

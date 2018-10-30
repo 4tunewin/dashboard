@@ -1,10 +1,13 @@
 import React from 'react';
-import { Form, Field, ErrorMessage } from 'formik';
-import { Button, Modal, Input, FormField, Message } from 'semantic-ui-react';
+import { Form, Field } from 'formik';
+import { Button, Modal, Input } from 'semantic-ui-react';
 
 import { FormStatus, FormError } from '../../common';
 import { renderField } from '../../../lib/form';
-import withModal from '../../../lib/withModal';
+
+const fields = {
+    input: renderField(Input),
+};
 
 /**
  * Button that triggers top-up dialog
@@ -18,10 +21,6 @@ const TopupButton = ({ onClick }) => (
         basic
     />
 );
-
-const fields = {
-    input: renderField(Input),
-};
 
 /**
  * Dialog with form that allow to specify ammount for top-up
@@ -76,4 +75,4 @@ const TopupDialog = ({
     </Modal>
 );
 
-export default withModal(TopupDialog);
+export default TopupDialog;
