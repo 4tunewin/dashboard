@@ -65,6 +65,7 @@ const TopupDialog = ({
                 Execute
             </Button>
             <Button
+                type="submit"
                 onClick={onClose}
                 icon="remove"
                 content="Cancel"
