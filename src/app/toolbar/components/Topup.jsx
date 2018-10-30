@@ -1,7 +1,12 @@
 import React from 'react';
-import { Button, Modal } from 'semantic-ui-react';
+import { Form, Field, ErrorMessage } from 'formik';
+import { Button, Modal, Input, FormField } from 'semantic-ui-react';
 
 import withModal from '../../../lib/withModal';
+
+const renderField = Component => ({ field, ...props }) => (
+    <Component {...props} {...field} />
+);
 
 /**
  * Button that triggers top-up dialog
@@ -19,7 +24,14 @@ const TopupButton = ({ onClick }) => (
 /**
  * Dialog with form that allow to specify ammount for top-up
  */
-const TopupDialog = ({ open, onOpen, onClose }) => (
+const TopupDialog = ({
+    open,
+    onOpen,
+    onClose,
+    initialValues,
+    handleSubmit,
+    isSubmitting,
+}) => (
     <Modal
         open={open}
         onClose={onClose}
@@ -27,12 +39,21 @@ const TopupDialog = ({ open, onOpen, onClose }) => (
         size="small"
     >
         <Modal.Header>Top-up contract balance</Modal.Header>
-        <Modal.Content>[TOP-UP FORM GOES HERE]</Modal.Content>
+        <Modal.Content>
+            <Form>
+                <Field
+                    name="amount"
+                    component={renderField(Input)}
+                    placeholder="Amount"
+                    fluid
+                />
+            </Form>
+        </Modal.Content>
         <Modal.Actions>
             <Button
-                // onClick={handleSubmit}
-                // disabled={pristine || submitting}
-                // loading={submitting}
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                loading={isSubmitting}
                 primary
             >
                 Execute

@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
 import Withdraw from './Withdraw';
-import Topup from './Topup';
+import Topup from '../containers/Topup';
 import Holders from './Holders';
 import ActionsMenu from './ActionsMenu';
 
