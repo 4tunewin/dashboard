@@ -19,6 +19,7 @@ const Details = ({
                     <AsyncValue
                         fetch={fetchOwnerAsync}
                         placeholder={DUMMY_ADDRESS}
+                        interval={1000}
                     >
                         {({ value }) => <ExplorerLink address={value} />}
                     </AsyncValue>
