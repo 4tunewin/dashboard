@@ -8,9 +8,9 @@ import BeneficiaryField from './BeneficiaryField';
 import { FormStatus, FormError } from '../../../common';
 
 /**
- * Button that triggers withdraw dialog
+ * Button that triggers dialog
  */
-const WithdrawButton = ({ onClick }) => (
+const Trigger = ({ onClick }) => (
     <Button
         onClick={onClick}
         content="Withdraw"
@@ -23,7 +23,7 @@ const WithdrawButton = ({ onClick }) => (
 /**
  * Dialog with form that allow to specify ammount for withdraw
  */
-const WithdrawDialog = ({
+const Dialog = ({
     open,
     onOpen,
     onClose,
@@ -36,7 +36,7 @@ const WithdrawDialog = ({
     <Modal
         open={open}
         onClose={onClose}
-        trigger={<WithdrawButton onClick={onOpen} />}
+        trigger={<Trigger onClick={onOpen} />}
         size="tiny"
     >
         <Modal.Header>Withdraw funds from contract balance</Modal.Header>
@@ -74,4 +74,4 @@ const WithdrawDialog = ({
     </Modal>
 );
 
-export default WithdrawDialog;
+export default Dialog;

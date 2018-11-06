@@ -7,9 +7,9 @@ import AmountField from '../../containers/topup/AmountField';
 import { FormStatus, FormError } from '../../../common';
 
 /**
- * Button that triggers top-up dialog
+ * Button that triggers dialog
  */
-const TopupButton = ({ onClick }) => (
+const Trigger = ({ onClick }) => (
     <Button
         onClick={onClick}
         content="Top-up"
@@ -22,7 +22,7 @@ const TopupButton = ({ onClick }) => (
 /**
  * Dialog with form that allow to specify ammount for top-up
  */
-const TopupDialog = ({
+const Dialog = ({
     open,
     onOpen,
     onClose,
@@ -35,7 +35,7 @@ const TopupDialog = ({
     <Modal
         open={open}
         onClose={onClose}
-        trigger={<TopupButton onClick={onOpen} />}
+        trigger={<Trigger onClick={onOpen} />}
         size="tiny"
     >
         <Modal.Header>Top-up contract balance</Modal.Header>
@@ -67,4 +67,4 @@ const TopupDialog = ({
     </Modal>
 );
 
-export default TopupDialog;
+export default Dialog;
