@@ -3,7 +3,7 @@ import { withFormik } from 'formik';
 
 import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
-import SecretSigner from '../../components/secretSigner/SecretSigner';
+import ChangeSecretSigner from '../../components/secretSigner/ChangeSecretSigner';
 
 const { web3 } = window;
 
@@ -34,8 +34,7 @@ const handleSubmit = async (
 };
 
 /**
- * Make sure that specified amount is not zero and not
- * greater then balance of current wallet.
+ * Make sure that user has provided a new secret signer address
  */
 const validate = async values => {
     const errors = {};
@@ -55,4 +54,4 @@ export default compose(
         handleSubmit,
         validate,
     }),
-)(SecretSigner);
+)(ChangeSecretSigner);

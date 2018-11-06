@@ -35,7 +35,6 @@ const Dialog = ({
         <Modal.Header>Change secret signer</Modal.Header>
         <Modal.Content>
             <FormStatus status={status} />
-            <CurrentAddress />
             <Form>
                 <Field
                     name="address"
@@ -45,8 +44,9 @@ const Dialog = ({
                     iconPosition="left"
                     fluid
                 />
-                <FormError name="amount" />
+                <FormError name="address" />
             </Form>
+            <CurrentAddress />
         </Modal.Content>
         <Modal.Actions>
             <Button
