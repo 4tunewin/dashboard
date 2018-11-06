@@ -10,8 +10,8 @@ const Wrapper = styled.div`
     font-size: 13px;
 `;
 
-const CurrentAddress = ({ fetchSecretSignerAsync }) => (
-    <AsyncValue fetch={fetchSecretSignerAsync} placeholder={DUMMY_ADDRESS}>
+const CurrentAddress = ({ fetchAsync }) => (
+    <AsyncValue fetch={fetchAsync} placeholder={DUMMY_ADDRESS}>
         {({ value }) => (
             <Wrapper>
                 <strong>Current: </strong>

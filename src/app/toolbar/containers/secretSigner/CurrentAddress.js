@@ -6,12 +6,10 @@ import CurrentAddress from '../../components/secretSigner/CurrentAddress';
 /**
  * Fetch secret signer address
  */
-const fetchSecretSignerAsync = ownProps => () => {
+const fetchAsync = ownProps => () => {
     return DiceContract.deployed().then(instance => {
         return instance.secretSigner();
     });
 };
 
-export default compose(withHandlers({ fetchSecretSignerAsync }))(
-    CurrentAddress,
-);
+export default compose(withHandlers({ fetchAsync }))(CurrentAddress);
