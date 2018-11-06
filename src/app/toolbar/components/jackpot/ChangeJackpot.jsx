@@ -2,8 +2,8 @@ import React from 'react';
 import { Field } from 'formik';
 import { Dropdown, Button, Modal } from 'semantic-ui-react';
 
-import { Form, Input } from '../../../common';
-import { FormStatus, FormError } from '../../../common';
+import { Form, Input, FormStatus, FormError } from '../../../common';
+import AmountFild from './AmountField';
 
 /**
  * Button that triggers dialog
@@ -35,14 +35,7 @@ const Dialog = ({
         <Modal.Content>
             <FormStatus status={status} />
             <Form>
-                <Field
-                    name="amount"
-                    component={Input}
-                    placeholder="Amount"
-                    icon="ethereum"
-                    iconPosition="left"
-                    fluid
-                />
+                <Field name="amount" component={AmountFild} />
                 <FormError name="amount" />
             </Form>
         </Modal.Content>
