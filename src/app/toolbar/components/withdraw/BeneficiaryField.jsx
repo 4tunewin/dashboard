@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select } from '../../../common';
+import { Dropdown } from '../../../common';
 
 const { web3 } = window;
 
@@ -12,7 +12,13 @@ const options = [
 ];
 
 const BeneficiaryField = props => (
-    <Select {...props} options={options} placeholder="Beneficiary" fluid />
+    <Dropdown
+        {...props}
+        options={options}
+        placeholder="Beneficiary"
+        fluid
+        selection
+    />
 );
 
 export default BeneficiaryField;

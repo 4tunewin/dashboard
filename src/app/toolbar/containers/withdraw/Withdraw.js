@@ -39,7 +39,6 @@ const handleSubmit = async (
  * greater then contract balance
  */
 const validate = async values => {
-    console.log('values', values);
     const errors = {};
 
     const amount = parseFloat(values.amount, 16);

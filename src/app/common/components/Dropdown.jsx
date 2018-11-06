@@ -1,12 +1,12 @@
 /**
- * An input component that works correctly with formik form handler
+ * A select component that works correctly with formik form handler
  */
 import React from 'react';
 import { withHandlers } from 'recompose';
-import { Input } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 
 const Component = ({ form, field, ...props }) => (
-    <Input {...field} {...props} />
+    <Dropdown {...field} {...props} />
 );
 
 /**
