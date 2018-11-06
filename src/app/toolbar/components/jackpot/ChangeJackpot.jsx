@@ -2,7 +2,7 @@ import React from 'react';
 import { Field } from 'formik';
 import { Dropdown, Button, Modal } from 'semantic-ui-react';
 
-import { Form, Input, FormStatus, FormError } from '../../../common';
+import { Form, FormStatus, FormError } from '../../../common';
 import AmountFild from './AmountField';
 
 /**
