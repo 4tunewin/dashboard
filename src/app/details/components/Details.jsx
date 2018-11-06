@@ -5,7 +5,12 @@ import { AsyncValue, ExplorerLink } from '../../common';
 
 const DUMMY_ADDRESS = '0x0000000000000000000000000000000000000000';
 
-const Details = ({ constants, fetchOwnerAsync, fetchSecretSignerAsync }) => (
+const Details = ({
+    constants,
+    fetchOwnerAsync,
+    fetchSecretSignerAsync,
+    fetchMaxProfitAsync,
+}) => (
     <Table definition stripped>
         <Table.Body>
             <Table.Row>
@@ -53,6 +58,18 @@ const Details = ({ constants, fetchOwnerAsync, fetchSecretSignerAsync }) => (
                 <Table.Cell>Jackpot Fee</Table.Cell>
                 <Table.Cell textAlign="right">
                     {constants['JACKPOT_FEE']} ETH
+                </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+                <Table.Cell>Max Reward</Table.Cell>
+                <Table.Cell textAlign="right">
+                    <AsyncValue
+                        fetch={fetchMaxProfitAsync}
+                        placeholder="0"
+                        interval={1000}
+                    >
+                        {({ value }) => <span>{value}</span>}
+                    </AsyncValue>
                 </Table.Cell>
             </Table.Row>
         </Table.Body>
