@@ -17,7 +17,7 @@ const fetchOwnerAsync = ownProps => () => {
  */
 const fetchSecretSignerAsync = ownProps => () => {
     return DiceContract.deployed().then(instance => {
-        return instance.owner();
+        return instance.secretSigner();
     });
 };
 

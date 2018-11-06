@@ -25,6 +25,7 @@ const Details = ({ constants, fetchOwnerAsync, fetchSecretSignerAsync }) => (
                     <AsyncValue
                         fetch={fetchSecretSignerAsync}
                         placeholder={DUMMY_ADDRESS}
+                        interval={1000}
                     >
                         {({ value }) => <ExplorerLink address={value} />}
                     </AsyncValue>
