@@ -2,9 +2,9 @@ import { compose } from 'recompose';
 import { withFormik } from 'formik';
 import { promisify } from 'bluebird';
 
-import withModal from '../../../lib/withModal';
-import { DiceContract } from '../../../contracts';
-import Topup from '../components/Topup';
+import withModal from '../../../../lib/withModal';
+import { DiceContract } from '../../../../contracts';
+import Topup from '../../components/topup/Topup';
 
 const { web3 } = window;
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
-import Withdraw from './Withdraw';
-import Topup from '../containers/Topup';
+import Withdraw from '../containers/withdraw';
+import Topup from '../containers/topup';
 import Holders from './Holders';
 import ActionsMenu from './ActionsMenu';
 

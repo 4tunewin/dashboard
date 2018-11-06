@@ -1,13 +1,10 @@
 import React from 'react';
-import { Form, Field } from 'formik';
-import { Button, Modal, Input } from 'semantic-ui-react';
+import { Field } from 'formik';
+import { Button, Modal } from 'semantic-ui-react';
 
-import { FormStatus, FormError } from '../../common';
-import { renderField } from '../../../lib/form';
-
-const fields = {
-    input: renderField(Input),
-};
+import { Form } from '../../../common';
+import AmountField from '../../containers/topup/AmountField';
+import { FormStatus, FormError } from '../../../common';
 
 /**
  * Button that triggers top-up dialog
@@ -17,7 +14,7 @@ const TopupButton = ({ onClick }) => (
         onClick={onClick}
         content="Top-up"
         icon="arrow alternate circle down"
-        color="red"
+        color="green"
         basic
     />
 );
@@ -39,18 +36,13 @@ const TopupDialog = ({
         open={open}
         onClose={onClose}
         trigger={<TopupButton onClick={onOpen} />}
-        size="small"
+        size="tiny"
     >
         <Modal.Header>Top-up contract balance</Modal.Header>
         <Modal.Content>
             <FormStatus status={status} />
             <Form>
-                <Field
-                    name="amount"
-                    component={fields.input}
-                    placeholder="Amount"
-                    fluid
-                />
+                <Field name="amount" component={AmountField} />
                 <FormError name="amount" />
             </Form>
         </Modal.Content>
