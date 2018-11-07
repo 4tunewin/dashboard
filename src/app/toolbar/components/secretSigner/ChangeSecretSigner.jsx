@@ -57,11 +57,11 @@ const Dialog = ({
                 Execute
             </Button>
             <Button
-                onClick={handleSubmit}
-                disabled={isSubmitting || !isValid}
-                loading={isSubmitting}
+                type="submit"
+                onClick={onClose}
                 icon="remove"
                 content="Cancel"
+                disabled={isSubmitting}
                 basic
             />
         </Modal.Actions>
