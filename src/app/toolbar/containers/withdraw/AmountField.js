@@ -4,26 +4,35 @@ import { DiceContract } from '../../../../contracts';
 
 import AmountField from '../../components/withdraw/AmountField';
 
-const withMaxClick = withHandlers({
-    onClickMax: ({ field }) => {
+const withIncBy = withHandlers({
+    /**
+     * Fill withdraw field with specified percent from total contract balance.
+     */
+    incBy: ({ field }) => {
         const { web3 } = window;
 
-        return async () => {
-            const maxAmount = await DiceContract.deployed().then(instance => {
-                const getBalance = promisify(web3.eth.getBalance, {
-                    context: web3,
+        return async value => {
+            const balance = await DiceContract.deployed()
+                .then(instance => {
+                    const getBalance = promisify(web3.eth.getBalance, {
+                        context: web3,
+                    });
+                    return getBalance(instance.address);
+                })
+                .then(balance => {
+                    return window.web3.fromWei(balance, 'ether');
                 });
-                return getBalance(instance.address);
-            });
+
+            const amount = balance * parseFloat(value, 10);
 
             field.onChange({
                 target: {
                     name: field.name,
-                    value: web3.fromWei(maxAmount.toNumber(), 'ether'),
+                    value: amount,
                 },
             });
         };
     },
 });
 
-export default withMaxClick(AmountField);
+export default withIncBy(AmountField);
