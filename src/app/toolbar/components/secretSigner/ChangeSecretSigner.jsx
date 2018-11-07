@@ -2,8 +2,7 @@ import React from 'react';
 import { Field } from 'formik';
 import { Dropdown, Button, Modal } from 'semantic-ui-react';
 
-import { Form, Input } from '../../../common';
-import { FormStatus, FormError } from '../../../common';
+import { Form, Input, FormStatus, FormError } from '../../../common';
 import CurrentAddress from '../../containers/secretSigner/CurrentAddress';
 
 /**
@@ -58,11 +57,11 @@ const Dialog = ({
                 Execute
             </Button>
             <Button
-                type="submit"
-                onClick={onClose}
+                onClick={handleSubmit}
+                disabled={isSubmitting || !isValid}
+                loading={isSubmitting}
                 icon="remove"
                 content="Cancel"
-                disabled={isSubmitting}
                 basic
             />
         </Modal.Actions>
