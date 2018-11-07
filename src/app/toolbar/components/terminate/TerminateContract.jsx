@@ -1,7 +1,8 @@
 import React from 'react';
-import { Header, Dropdown, Button, Modal } from 'semantic-ui-react';
+import { Field } from 'formik';
+import { Dropdown, Button, Modal } from 'semantic-ui-react';
 
-import { FormStatus } from '../../../common';
+import { Form, Input, FormStatus, FormError } from '../../../common';
 
 /**
  * Button that triggers dialog
@@ -14,15 +15,23 @@ const Trigger = ({ onClick }) => (
  * Dialog with form that confirms user action and terminates
  * the contract.
  */
-const Dialog = ({ open, onOpen, onClose, onConfirm, status }) => (
+const Dialog = ({
+    open,
+    onOpen,
+    onClose,
+    initialValues,
+    handleSubmit,
+    isSubmitting,
+    isValid,
+    status,
+}) => (
     <Modal
         open={open}
         onClose={onClose}
         trigger={<Trigger onClick={onOpen} />}
-        size="small"
-        basic
+        size="tiny"
     >
-        <Header icon="remove" content="Terminate Contract" />
+        <Modal.Header>Terminate Contract</Modal.Header>
         <Modal.Content>
             <FormStatus status={status} />
 
@@ -30,6 +39,18 @@ const Dialog = ({ open, onOpen, onClose, onConfirm, status }) => (
                 Are you sure you want to terminate contract? There is no way to
                 recover it after termination.
             </p>
+
+            <p>To terminate contract, please type "TERMINATE CONTRACT"</p>
+
+            <Form>
+                <Field
+                    name="message"
+                    component={Input}
+                    placeholder="Type here..."
+                    fluid
+                />
+                <FormError name="message" />
+            </Form>
         </Modal.Content>
         <Modal.Actions>
             <Button
@@ -37,15 +58,15 @@ const Dialog = ({ open, onOpen, onClose, onConfirm, status }) => (
                 color="red"
                 content="No"
                 onClick={onClose}
-                basic
-                inverted
+                disabled={isSubmitting}
             />
             <Button
+                onClick={handleSubmit}
+                disabled={isSubmitting || !isValid}
+                loading={isSubmitting}
                 icon="checkmark"
-                color="green"
                 content="Yes"
-                onClick={onConfirm}
-                inverted
+                primary
             />
         </Modal.Actions>
     </Modal>

@@ -1,39 +1,60 @@
-import { compose, withState, withHandlers } from 'recompose';
+import { compose } from 'recompose';
+import { withFormik } from 'formik';
 
 import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import TerminateContract from '../../components/terminate/TerminateContract';
 
+// Phrase that confirms that user sure about his action
+const TERMINATION_PHRASE = 'TERMINATE CONTRACT';
+
 const { web3 } = window;
 
-// Holds state of the action
-const withStatus = withState('status', 'setStatus');
+/**
+ * Handle form sumission by changing secret signer
+ * to specified address
+ */
+const handleSubmit = async (
+    { address },
+    { validateForm, setSubmitting, setErrors, setStatus, props },
+) => {
+    const contract = await DiceContract.deployed();
+
+    try {
+        await contract.kill({
+            from: web3.eth.accounts[0],
+        });
+        props.onClose();
+    } catch (e) {
+        setStatus({
+            type: 'error',
+            msg: 'Failed to terminate contract',
+            reason: e.message,
+        });
+    } finally {
+        setSubmitting(false);
+    }
+};
 
 /**
- * Handles confirmation action by terminating account.
+ * Make sure that user has provided a new secret signer address
  */
-const withConfirmationHandler = withHandlers({
-    onConfirm: ({ onClose, setStatus }) => async () => {
-        const contract = await DiceContract.deployed();
+const validate = async values => {
+    const errors = {};
 
-        try {
-            await contract.kill({
-                from: web3.eth.accounts[0],
-            });
+    if (values.message !== TERMINATION_PHRASE) {
+        errors.message = `Please type "${TERMINATION_PHRASE}" to confirm your action.`;
+    }
 
-            onClose();
-        } catch (e) {
-            setStatus({
-                type: 'error',
-                msg: 'Failed to terminate contract',
-                reason: e.message,
-            });
-        }
-    },
-});
+    if (Object.keys(errors).length) {
+        throw errors;
+    }
+};
 
 export default compose(
     withModal,
-    withStatus,
-    withConfirmationHandler,
+    withFormik({
+        handleSubmit,
+        validate,
+    }),
 )(TerminateContract);
