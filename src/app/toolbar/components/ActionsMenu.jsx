@@ -5,6 +5,7 @@ import ChangeSecretSigner from '../containers/secretSigner/ChangeSecretSigner';
 import ChangeJackpot from '../containers/jackpot/ChangeJackpot';
 import ChangeMaxProfit from '../containers/profit/ChangeMaxProfit';
 import ChangeOwner from '../containers/owner/ChangeOwner';
+import TerminateContract from '../containers/terminate/TerminateContract';
 
 const ActionsMenu = () => (
     <Dropdown trigger={<Button icon="settings" basic />} icon>
@@ -14,7 +15,7 @@ const ActionsMenu = () => (
             <ChangeMaxProfit />
             <ChangeJackpot />
             <Dropdown.Divider />
-            <Dropdown.Item>Kill contract</Dropdown.Item>
+            <TerminateContract />
         </Dropdown.Menu>
     </Dropdown>
 );
