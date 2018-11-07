@@ -1,7 +1,8 @@
 import { withHandlers } from 'recompose';
 import { promisify } from 'bluebird';
-import { DiceContract } from '../../../../contracts';
+import { round } from 'lodash';
 
+import { DiceContract } from '../../../../contracts';
 import AmountField from '../../components/withdraw/AmountField';
 
 const withIncBy = withHandlers({
@@ -23,7 +24,7 @@ const withIncBy = withHandlers({
                     return window.web3.fromWei(balance, 'ether');
                 });
 
-            const amount = balance * parseFloat(value, 10);
+            const amount = round(balance * parseFloat(value, 10), 3);
 
             field.onChange({
                 target: {
