@@ -23,9 +23,9 @@ const eventHandlers = withHandlers({
 
         if (onChange) onChange(e, { name, value });
     },
-    onBlur: ({ field, onBlur }) => (e, { name }) => {
+    onBlur: ({ field, onBlur }) => e => {
         field.onBlur({
-            target: { name },
+            target: { name: field.name },
         });
 
         if (onBlur) onBlur(e);
