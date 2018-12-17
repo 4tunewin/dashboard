@@ -7,8 +7,9 @@ import NetworkName from '../components/NetworkName';
  * Fetch network ID
  */
 const fetchNetworkAsync = ownProps => () => {
-    const { web3 } = window;
-    const getNetwork = promisify(web3.version.getNetwork, { context: web3 });
+    const getNetwork = promisify(window.web3.version.getNetwork, {
+        context: window.web3,
+    });
 
     return getNetwork();
 };

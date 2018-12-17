@@ -5,9 +5,7 @@ const handlers = withHandlers({
         return form.handleChange({ target: { name, value } });
     },
     onBlur: ({ field, form }) => (e, data) => {
-        // console.log({ e, data, field });
         if (data) {
-            console.log(data);
             return form.handleBlur({
                 target: { name: field.name, value: data.value },
             });

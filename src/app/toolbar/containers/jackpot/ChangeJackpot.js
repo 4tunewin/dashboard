@@ -6,8 +6,6 @@ import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import ChangeJackpot from '../../components/jackpot/ChangeJackpot';
 
-const { web3 } = window;
-
 /**
  * Handle form sumission by increasing jackpot to
  * specified amount
@@ -19,8 +17,8 @@ const handleSubmit = async (
     const contract = await DiceContract.deployed();
 
     try {
-        await contract.increaseJackpot(web3.toWei(amount, 'ether'), {
-            from: web3.eth.accounts[0],
+        await contract.increaseJackpot(window.web3.toWei(amount, 'ether'), {
+            from: window.web3.eth.accounts[0],
         });
         props.onClose();
     } catch (e) {

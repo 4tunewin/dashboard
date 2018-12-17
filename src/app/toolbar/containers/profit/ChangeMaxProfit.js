@@ -5,8 +5,6 @@ import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import ChangeMaxProfit from '../../components/profit/ChangeMaxProfit';
 
-const { web3 } = window;
-
 /**
  * Handle form sumission by changing max profit to
  * specified amount
@@ -18,8 +16,8 @@ const handleSubmit = async (
     const contract = await DiceContract.deployed();
 
     try {
-        await contract.setMaxProfit(web3.toWei(amount, 'ether'), {
-            from: web3.eth.accounts[0],
+        await contract.setMaxProfit(window.web3.toWei(amount, 'ether'), {
+            from: window.web3.eth.accounts[0],
         });
         props.onClose();
     } catch (e) {

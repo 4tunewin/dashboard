@@ -6,8 +6,6 @@ import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import Withdraw from '../../components/withdraw/Withdraw';
 
-const { web3 } = window;
-
 /**
  * Handle form submission by withdrawing specified
  * amount from contract balance.
@@ -19,9 +17,13 @@ const handleSubmit = async (
     const contract = await DiceContract.deployed();
 
     try {
-        await contract.withdrawFunds(beneficiary, web3.toWei(amount, 'ether'), {
-            from: web3.eth.accounts[0],
-        });
+        await contract.withdrawFunds(
+            beneficiary,
+            window.web3.toWei(amount, 'ether'),
+            {
+                from: window.web3.eth.accounts[0],
+            },
+        );
         props.onClose();
     } catch (e) {
         setStatus({

@@ -6,8 +6,6 @@ import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import Topup from '../../components/topup/Topup';
 
-const { web3 } = window;
-
 /**
  * Handle form submission by sending specified
  * amount on contract balance.
@@ -20,8 +18,8 @@ const handleSubmit = async (
 
     try {
         await contract.sendTransaction({
-            from: web3.eth.accounts[0],
-            value: web3.toWei(amount, 'ether'),
+            from: window.web3.eth.accounts[0],
+            value: window.web3.toWei(amount, 'ether'),
         });
         props.onClose();
     } catch (e) {

@@ -10,13 +10,11 @@ const withIncBy = withHandlers({
      * Fill withdraw field with specified percent from total contract balance.
      */
     incBy: ({ field }) => {
-        const { web3 } = window;
-
         return async value => {
             const balance = await DiceContract.deployed()
                 .then(instance => {
-                    const getBalance = promisify(web3.eth.getBalance, {
-                        context: web3,
+                    const getBalance = promisify(window.web3.eth.getBalance, {
+                        context: window.web3,
                     });
                     return getBalance(instance.address);
                 })

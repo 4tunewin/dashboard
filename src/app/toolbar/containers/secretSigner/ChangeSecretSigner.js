@@ -5,8 +5,6 @@ import withModal from '../../../../lib/withModal';
 import { DiceContract } from '../../../../contracts';
 import ChangeSecretSigner from '../../components/secretSigner/ChangeSecretSigner';
 
-const { web3 } = window;
-
 /**
  * Handle form sumission by changing secret signer
  * to specified address
@@ -19,7 +17,7 @@ const handleSubmit = async (
 
     try {
         await contract.setSecretSigner(address, {
-            from: web3.eth.accounts[0],
+            from: window.web3.eth.accounts[0],
         });
         props.onClose();
     } catch (e) {

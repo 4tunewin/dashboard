@@ -4,8 +4,6 @@ import { List } from 'semantic-ui-react';
 
 import { ExplorerLink } from '../../common';
 
-const { web3 } = window;
-
 const ListItem = styled(List.Item)`
     display: inline-block;
     white-space: nowrap;
@@ -21,7 +19,7 @@ const PaymentArgs = ({ args }) => (
         </ListItem>
         <ListItem>
             <strong>AMOUNT: </strong>
-            {web3.fromWei(args.amount.toNumber(), 'ether')} ETH
+            {window.web3.fromWei(args.amount.toNumber(), 'ether')} ETH
         </ListItem>
     </List>
 );
@@ -34,7 +32,7 @@ const BetPlacedArgs = ({ args }) => (
         </ListItem>
         <ListItem>
             <strong>AMOUNT: </strong>
-            {web3.fromWei(args.amount.toNumber(), 'ether')} ETH
+            {window.web3.fromWei(args.amount.toNumber(), 'ether')} ETH
         </ListItem>
         <ListItem>
             <strong>COMMIT: </strong>

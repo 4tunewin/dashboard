@@ -5,8 +5,6 @@ import { differenceInSeconds } from 'date-fns';
 import { humanizeDuration } from '../../../lib/date';
 import EventItem from '../components/EventItem';
 
-const { web3 } = window;
-
 /**
  * Fetch timestamp for specified block
  */
@@ -16,7 +14,9 @@ const fetchTimestampAsync = () => {
     return async block => {
         // Cache block to run this function periodicly without quering network
         if (!_block) {
-            const getBlock = promisify(web3.eth.getBlock, { context: web3 });
+            const getBlock = promisify(window.web3.eth.getBlock, {
+                context: window.web3,
+            });
             _block = await getBlock(block);
         }
 
