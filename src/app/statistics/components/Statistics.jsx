@@ -7,7 +7,6 @@ import Bets from '../containers/Bets';
 import Wins from '../containers/Wins';
 import Jackpot from '../containers/Jackpot';
 import LockedInBets from '../containers/LockedInBets';
-import Holders from './Holders';
 
 const Group = styled(Statistic.Group)`
     justify-content: center;
@@ -24,7 +23,6 @@ const Statistics = () => (
         <Wins />
         <Jackpot />
         <LockedInBets />
-        <Holders />
     </Group>
 );
 
