@@ -40,7 +40,7 @@ const handleAcceptOwner = withHandlers({
 
         try {
             await contract.acceptNextOwner({
-                from: web3.eth.accounts[0],
+                from: window.web3.eth.accounts[0],
             });
 
             onClose();

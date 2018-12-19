@@ -47,13 +47,15 @@ const validate = async values => {
     if (!amount || amount <= 0) {
         errors.amount = 'Specify amount you want to withdraw';
     } else {
-        const getBalance = promisify(web3.eth.getBalance, { context: web3 });
+        const getBalance = promisify(window.web3.eth.getBalance, {
+            context: window.web3,
+        });
         const maxAmount = await DiceContract.deployed()
             .then(instance => {
                 return getBalance(instance.address);
             })
             .then(balance => {
-                return web3.fromWei(balance.toNumber(), 'ether');
+                return window.web3.fromWei(balance.toNumber(), 'ether');
             });
 
         if (amount > maxAmount) {

@@ -57,7 +57,7 @@ const componentDidMount = async function() {
         return instance.maxProfit();
     });
 
-    this.props.setAmount(web3.fromWei(maxProfit, 'ether'));
+    this.props.setAmount(window.web3.fromWei(maxProfit, 'ether'));
 };
 
 export default compose(

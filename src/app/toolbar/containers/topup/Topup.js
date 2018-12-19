@@ -44,10 +44,12 @@ const validate = async values => {
     if (!amount || amount <= 0) {
         errors.amount = 'Specify amount you want to transfer';
     } else {
-        const getBalance = promisify(web3.eth.getBalance, { context: web3 });
-        const maxAmount = await getBalance(web3.eth.accounts[0]).then(
+        const getBalance = promisify(window.web3.eth.getBalance, {
+            context: window.web3,
+        });
+        const maxAmount = await getBalance(window.web3.eth.accounts[0]).then(
             balance => {
-                return web3.fromWei(balance.toNumber(), 'ether');
+                return window.web3.fromWei(balance.toNumber(), 'ether');
             },
         );
 
