@@ -13,6 +13,7 @@
     "graphql-tag": "^2.10.0",
     "react": "^16.5.2",
     "react-apollo": "^2.2.4",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.5.2",
     "recompose": "^0.30.0",
     "semantic-ui-css": "^2.4.1",
