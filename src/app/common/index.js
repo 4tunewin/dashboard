@@ -5,3 +5,4 @@ export { default as FormError } from './components/FormError';
 export { default as Form } from './components/Form';
 export { default as Input } from './components/Input';
 export { default as Dropdown } from './components/Dropdown';
+export { default as CopyButton } from './components/CopyButton';

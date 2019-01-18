@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 
-import { AsyncValue, ExplorerLink } from '../../common';
+import { AsyncValue, ExplorerLink, CopyButton } from '../../common';
 
 const DUMMY_ADDRESS = '0x0000000000000000000000000000000000000000';
 
@@ -21,7 +21,12 @@ const Details = ({
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
                     >
-                        {({ value }) => <ExplorerLink address={value} />}
+                        {({ value }) => (
+                            <span>
+                                <ExplorerLink address={value} />
+                                <CopyButton value={value} />
+                            </span>
+                        )}
                     </AsyncValue>
                 </Table.Cell>
             </Table.Row>
@@ -33,7 +38,12 @@ const Details = ({
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
                     >
-                        {({ value }) => <ExplorerLink address={value} />}
+                        {({ value }) => (
+                            <span>
+                                <ExplorerLink address={value} />
+                                <CopyButton value={value} />
+                            </span>
+                        )}
                     </AsyncValue>
                 </Table.Cell>
             </Table.Row>
