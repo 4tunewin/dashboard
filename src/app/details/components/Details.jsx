@@ -9,6 +9,7 @@ const Details = ({
     constants,
     fetchOwnerAsync,
     fetchSecretSignerAsync,
+    fetchCroupierAsync,
     fetchMaxProfitAsync,
 }) => (
     <Table definition stripped>
@@ -35,6 +36,23 @@ const Details = ({
                 <Table.Cell textAlign="right">
                     <AsyncValue
                         fetch={fetchSecretSignerAsync}
+                        placeholder={DUMMY_ADDRESS}
+                        interval={1000}
+                    >
+                        {({ value }) => (
+                            <span>
+                                <ExplorerLink address={value} />
+                                <CopyButton value={value} />
+                            </span>
+                        )}
+                    </AsyncValue>
+                </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+                <Table.Cell>Croupier</Table.Cell>
+                <Table.Cell textAlign="right">
+                    <AsyncValue
+                        fetch={fetchCroupierAsync}
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
                     >

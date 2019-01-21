@@ -22,6 +22,15 @@ const fetchSecretSignerAsync = ownProps => () => {
 };
 
 /**
+ * Fetch croupier address
+ */
+const fetchCroupierAsync = ownProps => () => {
+    return DiceContract.deployed().then(instance => {
+        return instance.croupier();
+    });
+};
+
+/**
  * Fetch max profit value
  */
 const fetchMaxProfitAsync = ownProps => () => {
@@ -46,6 +55,7 @@ export default compose(
     withHandlers({
         fetchOwnerAsync,
         fetchSecretSignerAsync,
+        fetchCroupierAsync,
         fetchMaxProfitAsync,
     }),
 )(Details);
