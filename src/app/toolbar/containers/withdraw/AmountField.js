@@ -22,7 +22,7 @@ const withIncBy = withHandlers({
                     return window.web3.fromWei(balance, 'ether');
                 });
 
-            const amount = round(balance * parseFloat(value, 10), 3);
+            const amount = round(balance * parseFloat(value, 10), 6);
 
             field.onChange({
                 target: {
