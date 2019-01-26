@@ -42,7 +42,7 @@ const fetchMaxProfitAsync = ownProps => () => {
             return window.web3.fromWei(amount, 'ether');
         })
         .then(amount => {
-            return amount.toFixed(3);
+            return parseFloat(amount).toFixed(3);
         });
 };
 
