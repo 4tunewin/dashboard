@@ -7,12 +7,12 @@ const StyledIcon = styled(Icon)`
     cursor: pointer;
 `;
 
-const CopyButton = ({ value }) => (
+const CopyButton = ({ value, ...props }) => (
     <Popup
         content="Click to copy"
         trigger={
             <CopyToClipboard text={value}>
-                <StyledIcon name="copy outline" />
+                <StyledIcon name="copy outline" {...props} />
             </CopyToClipboard>
         }
         small

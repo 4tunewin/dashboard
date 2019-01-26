@@ -9,7 +9,7 @@ import Wins from '../components/Wins';
 const STATS_QUERY = gql`
     query Stats {
         stats {
-            wagers {
+            winners {
                 amount
             }
         }

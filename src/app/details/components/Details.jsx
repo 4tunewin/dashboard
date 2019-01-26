@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 
-import { AsyncValue, ExplorerLink, CopyButton } from '../../common';
+import { AsyncValue } from '../../common';
+import AddressWithBalance from './AddressWithBalance';
 
 const DUMMY_ADDRESS = '0x0000000000000000000000000000000000000000';
 
@@ -21,13 +22,9 @@ const Details = ({
                         fetch={fetchOwnerAsync}
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
+                        le
                     >
-                        {({ value }) => (
-                            <span>
-                                <ExplorerLink address={value} />
-                                <CopyButton value={value} />
-                            </span>
-                        )}
+                        {({ value }) => <AddressWithBalance address={value} />}
                     </AsyncValue>
                 </Table.Cell>
             </Table.Row>
@@ -39,12 +36,7 @@ const Details = ({
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
                     >
-                        {({ value }) => (
-                            <span>
-                                <ExplorerLink address={value} />
-                                <CopyButton value={value} />
-                            </span>
-                        )}
+                        {({ value }) => <AddressWithBalance address={value} />}
                     </AsyncValue>
                 </Table.Cell>
             </Table.Row>
@@ -56,12 +48,7 @@ const Details = ({
                         placeholder={DUMMY_ADDRESS}
                         interval={1000}
                     >
-                        {({ value }) => (
-                            <span>
-                                <ExplorerLink address={value} />
-                                <CopyButton value={value} />
-                            </span>
-                        )}
+                        {({ value }) => <AddressWithBalance address={value} />}
                     </AsyncValue>
                 </Table.Cell>
             </Table.Row>

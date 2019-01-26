@@ -1,4 +1,5 @@
 import { compose, withState, withHandlers, lifecycle } from 'recompose';
+import { promisify } from 'bluebird';
 
 import { DiceContract } from '../../../contracts';
 import EventsList from '../components/EventsList';
@@ -19,12 +20,15 @@ const pushEvent = ({ events, setEvents }) => log => {
 const componentDidMount = async function() {
     const { pushEvent } = this.props;
 
-    const instance = await DiceContract.deployed().then(instance => {
-        return instance;
+    const instance = await DiceContract.deployed();
+    const getBlockNumber = promisify(window.web3.eth.getBlockNumber, {
+        context: window.web3,
     });
 
+    // Get all events from latest 100 blocks and till now
+    const currentBlock = await getBlockNumber();
     const filters = {
-        fromBlock: 0,
+        fromBlock: currentBlock - 100 < 0 ? 0 : currentBlock - 100,
         toBlock: 'latest',
     };
 
